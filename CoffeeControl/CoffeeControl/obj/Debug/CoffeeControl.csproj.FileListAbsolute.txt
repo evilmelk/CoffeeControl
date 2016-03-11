@@ -8,3 +8,6 @@ D:\Google disk B.O\github\CoffeeControl\CoffeeControl\CoffeeControl\bin\Debug\Co
 D:\Google disk B.O\github\CoffeeControl\CoffeeControl\CoffeeControl\bin\Debug\CoffeeControl.pdb
 D:\Google disk B.O\github\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.exe
 D:\Google disk B.O\github\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.pdb
+C:\Users\Илья\Documents\GitHub\CoffeeControl\CoffeeControl\CoffeeControl\bin\Debug\CoffeeControl.exe.config
+C:\Users\Илья\Documents\GitHub\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.exe
+C:\Users\Илья\Documents\GitHub\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.pdb
