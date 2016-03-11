@@ -95,6 +95,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).BeginInit();
@@ -215,7 +217,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(75, 30);
             this.button12.TabIndex = 9;
-            this.button12.Text = "Кодитер.";
+            this.button12.Text = "Кондитер.";
             this.button12.UseVisualStyleBackColor = true;
             // 
             // button11
@@ -764,11 +766,31 @@
             this.label24.TabIndex = 11;
             this.label24.Text = "Текущий чек";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(12, 480);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(496, 71);
+            this.textBox3.TabIndex = 12;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label25.Location = new System.Drawing.Point(9, 459);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(170, 18);
+            this.label25.TabIndex = 13;
+            this.label25.Text = "Системные сообщения";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1223, 577);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.textBox2);
@@ -882,6 +904,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label25;
     }
 }
 
