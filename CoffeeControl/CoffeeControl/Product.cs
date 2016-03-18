@@ -18,5 +18,6 @@ namespace CoffeeControl
         public int sugar = 0;
         public int cream = 0;
         public int syrop = 0;
+        public double chokolate = 0;
     }
 }
