@@ -97,6 +97,8 @@
             this.label24 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.AddProductButton = new System.Windows.Forms.Button();
+            this.ProductsComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).BeginInit();
@@ -784,11 +786,31 @@
             this.label25.TabIndex = 13;
             this.label25.Text = "Системные сообщения";
             // 
+            // AddProductButton
+            // 
+            this.AddProductButton.Location = new System.Drawing.Point(12, 319);
+            this.AddProductButton.Name = "AddProductButton";
+            this.AddProductButton.Size = new System.Drawing.Size(75, 34);
+            this.AddProductButton.TabIndex = 23;
+            this.AddProductButton.Text = "Добавить товар";
+            this.AddProductButton.UseVisualStyleBackColor = true;
+            this.AddProductButton.Click += new System.EventHandler(this.AddProductButton_Click);
+            // 
+            // ProductsComboBox
+            // 
+            this.ProductsComboBox.FormattingEnabled = true;
+            this.ProductsComboBox.Location = new System.Drawing.Point(94, 319);
+            this.ProductsComboBox.Name = "ProductsComboBox";
+            this.ProductsComboBox.Size = new System.Drawing.Size(279, 21);
+            this.ProductsComboBox.TabIndex = 24;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1223, 577);
+            this.Controls.Add(this.ProductsComboBox);
+            this.Controls.Add(this.AddProductButton);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label24);
@@ -906,6 +928,8 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button AddProductButton;
+        private System.Windows.Forms.ComboBox ProductsComboBox;
     }
 }
 
