@@ -14,6 +14,8 @@ namespace CoffeeControl
     {
         List<Product> Products = new List<Product>();
         List<Material> Materials = new List<Material>();
+        List<Shop> Shops = new List<Shop>();
+        List<Worker> Workers = new List<Worker>();
 
         public Form1()
         {
@@ -213,6 +215,27 @@ namespace CoffeeControl
             Materials.Add(Coffee);
             Materials.Add(Chocolate);
 
+            Shop Barviha = new Shop();
+            Barviha.title = "Барвиха";
+
+            Shop Kreml = new Shop();
+            Kreml.title = "Кремль";
+
+            Shops.Add(Barviha);
+            Shops.Add(Kreml);
+
+            Worker Ivanov = new Worker();
+            Ivanov.surname = "Иванов";
+            Ivanov.name = "Иван";
+
+            Worker Koil = new Worker();
+            Koil.surname = "Койл";
+            Koil.name = "Саша";
+
+            Workers.Add(Ivanov);
+            Workers.Add(Koil);
+            
+
 
             foreach (Product prod in Products)
             {
@@ -226,6 +249,16 @@ namespace CoffeeControl
                 productButton.BackColor = SystemColors.Menu;
 
                 flowLayoutPanel1.Controls.Add(productButton);
+            }
+
+            foreach (Shop mag in Shops)
+            {
+                ShopsBox.Items.Add(mag.title);                
+            }
+
+            foreach (Worker work in Workers)
+            {
+                WorkerBox.Items.Add(work.surname);               
             }
 
 
