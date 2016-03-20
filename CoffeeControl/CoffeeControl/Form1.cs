@@ -211,6 +211,24 @@ namespace CoffeeControl
           
             Materials.Add(Milk);
             Materials.Add(Coffee);
+            Materials.Add(Chocolate);
+
+
+            foreach (Product prod in Products)
+            {
+                //ProductsComboBox.Items.Add(prod.name);
+                //Products listView1.Items.Add(prod.name);
+                //listView1.Items.Add(prod.name);
+                Button productButton = new Button();
+                productButton.Text = prod.name;
+                productButton.Width = 96;
+                productButton.Height = 50;
+                productButton.BackColor = SystemColors.Menu;
+
+                flowLayoutPanel1.Controls.Add(productButton);
+            }
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -233,8 +251,42 @@ namespace CoffeeControl
         {
             foreach (Product prod in Products)
             {
-                ProductsComboBox.Items.Add(prod.name);
+                //ProductsComboBox.Items.Add(prod.name);
+                ////Products listView1.Items.Add(prod.name);
+                ////listView1.Items.Add(prod.name);
+                //Button productButton = new Button();
+                //productButton.Text = prod.name;
+                //productButton.Width = 96;
+                //productButton.Height = 50;
+                //productButton.BackColor = SystemColors.Menu;
+
+                //flowLayoutPanel1.Controls.Add(productButton);
             }
+        }
+
+        private void ProductsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Product prod in Products)
+            {
+              //  ProductsComboBox.Items.Add(prod.name);
+                //Products listView1.Items.Add(prod.name);
+                //listView1.Items.Add(prod.name);
+            }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
