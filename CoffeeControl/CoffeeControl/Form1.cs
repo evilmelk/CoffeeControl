@@ -168,6 +168,16 @@ namespace CoffeeControl
             HotChocolate05.covers = 1;
             HotChocolate05.milk = 0.320;
 
+            Product SyropCaramel = new Product();
+            SyropCaramel.name = "Крамел. Сир.";
+            SyropCaramel.price = 10;
+            SyropCaramel.SyropCaramel1 = 0.01;
+
+            Product SyropCocount = new Product();
+            SyropCocount.name = "Кокос. Сир.";
+            SyropCocount.price = 10;
+            SyropCocount.SyropCocount1 = 0.01;
+
 
             Products.Add(Korto);
             Products.Add(Lungo);
@@ -193,6 +203,8 @@ namespace CoffeeControl
             Products.Add(HotChocolate04);
             Products.Add(HotChocolate05);
 
+            Products.Add(SyropCaramel);
+            Products.Add(SyropCocount);
             
 
             Material Milk = new Material();
@@ -210,10 +222,96 @@ namespace CoffeeControl
             Chocolate.pieces = 2;
             Chocolate.unitName = "КГ";
 
+            Material Cup01 = new Material();
+            Cup01.name = "Стакан 0.1Л";
+            Cup01.pieces = 100;
+            Cup01.unitName = "ШТ";
+
+            Material Cup02 = new Material();
+            Cup02.name = "Стакан 0.2Л";
+            Cup02.pieces = 100;
+            Cup02.unitName = "ШТ";
+
+            Material Cup03 = new Material();
+            Cup03.name = "Стакан 0.3Л";
+            Cup03.pieces = 100;
+            Cup03.unitName = "ШТ";
+
+            Material Cup04 = new Material();
+            Cup04.name = "Стакан 0.4Л";
+            Cup04.pieces = 100;
+            Cup04.unitName = "ШТ";
+
+            Material Cup05 = new Material();
+            Cup05.name = "Стакан 0.5Л";
+            Cup05.pieces = 100;
+            Cup05.unitName = "ШТ";
+
+            Material Covers70 = new Material();
+            Covers70.name = "Крышка 70мм";
+            Covers70.pieces = 100;
+            Covers70.unitName = "ШТ";
+
+            Material Covers80 = new Material();
+            Covers80.name = "Крышка 80мм";
+            Covers80.pieces = 100;
+            Covers80.unitName = "ШТ";
+
+            Material Covers90 = new Material();
+            Covers90.name = "Крышка 90мм";
+            Covers90.pieces = 100;
+            Covers90.unitName = "ШТ";
+
+            Material Spoon = new Material();
+            Spoon.name = "Ложка";
+            Spoon.pieces = 100;
+            Spoon.unitName = "ШТ";
+
+            Material Cream = new Material();
+            Cream.name = "Сливки";
+            Cream.pieces = 20;
+            Cream.unitName = "Л";
+
+            Material SyropCaramel1 = new Material();
+            SyropCaramel1.name = "Сироп: карамель";
+            SyropCaramel1.pieces = 2;
+            SyropCaramel1.unitName = "Л";
+
+            Material SyropCocount1 = new Material();
+            SyropCocount1.name = "Сироп: кокос";
+            SyropCocount1.pieces = 2;
+            SyropCocount1.unitName = "Л";
+
+            Material Sugar = new Material();
+            Sugar.name = "Сахар";
+            Sugar.pieces = 3;
+            Sugar.unitName = "Кг";
+
+             Material Napkins = new Material();
+            Napkins.name = "Салфетки";
+            Napkins.pieces = 3;
+            Napkins.unitName = "Упак.";
+
           
+
             Materials.Add(Milk);
             Materials.Add(Coffee);
             Materials.Add(Chocolate);
+            Materials.Add(Cup01);
+            Materials.Add(Cup02);
+            Materials.Add(Cup03);
+            Materials.Add(Cup04);
+            Materials.Add(Cup05);
+            Materials.Add(Covers70);
+            Materials.Add(Covers80);
+            Materials.Add(Covers90);
+            Materials.Add(Spoon);
+            Materials.Add(Cream);
+            Materials.Add(SyropCaramel1);
+            Materials.Add(SyropCocount1);
+            Materials.Add(Sugar);
+            Materials.Add(Napkins);
+
 
             Shop Barviha = new Shop();
             Barviha.title = "Барвиха";
@@ -225,12 +323,11 @@ namespace CoffeeControl
             Shops.Add(Kreml);
 
             Worker Ivanov = new Worker();
-            Ivanov.surname = "Иванов";
-            Ivanov.name = "Иван";
+            Ivanov.name = "Иванов Василий";            
 
             Worker Koil = new Worker();
-            Koil.surname = "Койл";
-            Koil.name = "Саша";
+            Koil.name = "Койл Саша";
+            
 
             Workers.Add(Ivanov);
             Workers.Add(Koil);
@@ -239,15 +336,14 @@ namespace CoffeeControl
 
             foreach (Product prod in Products)
             {
-                //ProductsComboBox.Items.Add(prod.name);
-                //Products listView1.Items.Add(prod.name);
-                //listView1.Items.Add(prod.name);
                 Button productButton = new Button();
                 productButton.Text = prod.name;
                 productButton.Width = 96;
                 productButton.Height = 50;
                 productButton.BackColor = SystemColors.Menu;
-
+            //    productButton.DoubleClick  //for delete
+                string name = prod.name;
+                productButton.Click += but_Click;
                 flowLayoutPanel1.Controls.Add(productButton);
             }
 
@@ -258,7 +354,7 @@ namespace CoffeeControl
 
             foreach (Worker work in Workers)
             {
-                WorkerBox.Items.Add(work.surname);               
+                WorkerBox.Items.Add(work.name);               
             }
 
 
@@ -304,12 +400,7 @@ namespace CoffeeControl
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (Product prod in Products)
-            {
-              //  ProductsComboBox.Items.Add(prod.name);
-                //Products listView1.Items.Add(prod.name);
-                //listView1.Items.Add(prod.name);
-            }
+            
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -320,6 +411,25 @@ namespace CoffeeControl
         private void label25_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void but_Click(object sender, EventArgs e)
+        {
+
+            CheckAdd.Text += "Жопа";
+            
+            
+            
         }
     }
 }

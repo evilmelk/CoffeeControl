@@ -8,7 +8,7 @@ namespace CoffeeControl
 {
     class Worker
     {
-        public string surname;
+       // public string surname;
         public string name;
     }
 }

@@ -19,5 +19,7 @@ namespace CoffeeControl
         public int cream = 0;
         public int syrop = 0;
         public double chokolate = 0;
+        public double SyropCaramel1 = 0;
+        public double SyropCocount1 = 0;
     }
 }
