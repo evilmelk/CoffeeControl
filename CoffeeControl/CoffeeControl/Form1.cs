@@ -27,7 +27,7 @@ namespace CoffeeControl
             Korto.coffee = 0.007;
             Korto.cups = 1;
             Korto.covers = 1;
-            
+
 
             Product Lungo = new Product();
             Lungo.name = "Лунго";
@@ -35,7 +35,7 @@ namespace CoffeeControl
             Lungo.coffee = 0.007;
             Lungo.cups = 1;
             Lungo.covers = 1;
-            
+
 
             Product Doppio = new Product();
             Doppio.name = "Доппио";
@@ -205,7 +205,7 @@ namespace CoffeeControl
 
             Products.Add(SyropCaramel);
             Products.Add(SyropCocount);
-            
+
 
             Material Milk = new Material();
             Milk.name = "Молоко";
@@ -214,7 +214,7 @@ namespace CoffeeControl
 
             Material Coffee = new Material();
             Coffee.name = "Кофе";
-            Coffee.pieces = 2; 
+            Coffee.pieces = 2;
             Coffee.unitName = "КГ";
 
             Material Chocolate = new Material();
@@ -287,12 +287,12 @@ namespace CoffeeControl
             Sugar.pieces = 3;
             Sugar.unitName = "Кг";
 
-             Material Napkins = new Material();
+            Material Napkins = new Material();
             Napkins.name = "Салфетки";
             Napkins.pieces = 3;
             Napkins.unitName = "Упак.";
 
-          
+
 
             Materials.Add(Milk);
             Materials.Add(Coffee);
@@ -323,15 +323,15 @@ namespace CoffeeControl
             Shops.Add(Kreml);
 
             Worker Ivanov = new Worker();
-            Ivanov.name = "Иванов Василий";            
+            Ivanov.name = "Иванов Василий";
 
             Worker Koil = new Worker();
             Koil.name = "Койл Саша";
-            
+
 
             Workers.Add(Ivanov);
             Workers.Add(Koil);
-            
+
 
 
             foreach (Product prod in Products)
@@ -341,23 +341,44 @@ namespace CoffeeControl
                 productButton.Width = 96;
                 productButton.Height = 50;
                 productButton.BackColor = SystemColors.Menu;
-            //    productButton.DoubleClick  //for delete
-                string name = prod.name;
+                //    productButton.DoubleClick  //for delete
+                // вызов события по нажатию кнопки
                 productButton.Click += but_Click;
                 flowLayoutPanel1.Controls.Add(productButton);
             }
 
             foreach (Shop mag in Shops)
             {
-                ShopsBox.Items.Add(mag.title);                
+                ShopsBox.Items.Add(mag.title);
             }
 
             foreach (Worker work in Workers)
             {
-                WorkerBox.Items.Add(work.name);               
+                WorkerBox.Items.Add(work.name);
             }
 
 
+        }
+        /// <summary>
+        /// Функция добавляет название позиции в чек
+        /// </summary>
+        /// <param name="positionName">Название позиции</param>
+        public void addPositionToCheck(string positionName)
+        {
+            foreach (Product prod in Products)
+            {
+                if (prod.name == positionName)
+                {
+                    positionsList.Items.Add(positionName);
+                }
+            }
+        }
+
+        // событие по нажатию кнопки товара
+        private void but_Click(object sender, EventArgs e)
+        {
+            string posName = ((Button)sender).Text;
+            addPositionToCheck(posName);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -400,7 +421,7 @@ namespace CoffeeControl
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -423,13 +444,11 @@ namespace CoffeeControl
 
         }
 
-        private void but_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
-            CheckAdd.Text += "Жопа";
-            
-            
-            
         }
+
+
     }
 }

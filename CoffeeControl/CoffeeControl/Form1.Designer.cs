@@ -49,13 +49,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.CheckAdd = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button14 = new System.Windows.Forms.Button();
+            this.positionsList = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -279,14 +279,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Продажи";
             // 
-            // CheckAdd
-            // 
-            this.CheckAdd.Location = new System.Drawing.Point(541, 430);
-            this.CheckAdd.Multiline = true;
-            this.CheckAdd.Name = "CheckAdd";
-            this.CheckAdd.Size = new System.Drawing.Size(638, 70);
-            this.CheckAdd.TabIndex = 9;
-            // 
             // button13
             // 
             this.button13.Location = new System.Drawing.Point(776, 528);
@@ -354,6 +346,14 @@
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
+            // positionsList
+            // 
+            this.positionsList.FormattingEnabled = true;
+            this.positionsList.Location = new System.Drawing.Point(541, 440);
+            this.positionsList.Name = "positionsList";
+            this.positionsList.Size = new System.Drawing.Size(638, 82);
+            this.positionsList.TabIndex = 72;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,13 +361,13 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1202, 577);
+            this.Controls.Add(this.positionsList);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.button13);
-            this.Controls.Add(this.CheckAdd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -407,13 +407,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox CheckAdd;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.ListBox positionsList;
     }
 }
 
