@@ -12,6 +12,7 @@ namespace CoffeeControl
 {
     public partial class Form1 : Form
     {
+        double sumPrice = 0;
         List<Product> Products = new List<Product>();
         List<Material> Materials = new List<Material>();
         List<Shop> Shops = new List<Shop>();
@@ -19,6 +20,7 @@ namespace CoffeeControl
 
         public Form1()
         {
+            
             InitializeComponent();
 
             Product Korto = new Product();
@@ -365,8 +367,15 @@ namespace CoffeeControl
         /// <param name="positionName">Название позиции</param>
         public void addPositionToCheck(string positionName)
         {
+            string summOfCheck = "\t\t\t\t\t\t\t" + "Итог:  " + sumPrice + "р.";
+            
             foreach (Product prod in Products)
             {
+                if (positionsList.Items.Contains(summOfCheck))
+                {
+                    positionsList.Items.Remove(summOfCheck);
+                }
+
                 if (prod.name == positionName)
                 {
                     string position = prod.name + "\t\t" + prod.posCount + " шт. \t\t" + prod.price * prod.posCount + " р.";
@@ -375,10 +384,23 @@ namespace CoffeeControl
                         prod.posCount++;
                         positionsList.Items.Remove(position);
                     }
+                    sumPrice += prod.price;  
                     position = prod.name + "\t\t" + prod.posCount + " шт. \t\t" + prod.price * prod.posCount + " р.";
-                    positionsList.Items.Add(position);                    
+                    positionsList.Items.Add(position);
+                    
+                 
+                    
                 }
+
+                if (positionsList.Items.Contains(summOfCheck))
+                {
+                    positionsList.Items.Remove(summOfCheck);
+                }
+                
             }
+            summOfCheck = "\t\t\t\t\t\t\t" + "Итог:  " + sumPrice + "р."; 
+            positionsList.Items.Add(summOfCheck);
+            
         }
 
         // событие по нажатию кнопки товара
@@ -404,22 +426,7 @@ namespace CoffeeControl
 
         }
 
-        private void AddProductButton_Click(object sender, EventArgs e)
-        {
-            foreach (Product prod in Products)
-            {
-                //ProductsComboBox.Items.Add(prod.name);
-                ////Products listView1.Items.Add(prod.name);
-                ////listView1.Items.Add(prod.name);
-                //Button productButton = new Button();
-                //productButton.Text = prod.name;
-                //productButton.Width = 96;
-                //productButton.Height = 50;
-                //productButton.BackColor = SystemColors.Menu;
-
-                //flowLayoutPanel1.Controls.Add(productButton);
-            }
-        }
+       
 
         private void ProductsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

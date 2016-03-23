@@ -23,5 +23,6 @@ namespace CoffeeControl
         public double SyropCocount1 = 0;
 
         public int posCount = 1;
+        
     }
 }

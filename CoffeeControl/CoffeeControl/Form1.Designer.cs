@@ -377,6 +377,7 @@
             this.Controls.Add(this.WorkerBox);
             this.Controls.Add(this.ShopsBox);
             this.Controls.Add(this.shapeContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "CoffeeControl";
             this.panel1.ResumeLayout(false);
