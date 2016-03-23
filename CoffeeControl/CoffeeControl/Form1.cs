@@ -343,9 +343,9 @@ namespace CoffeeControl
                 productButton.Width = 96;
                 productButton.Height = 50;
                 productButton.BackColor = SystemColors.Menu;
-                //    productButton.DoubleClick  //for delete
-                // вызов события по нажатию кнопки
                 productButton.Click += but_Click;
+               // productButton.DoubleClick += but_Click_remove_one;               
+                productButton.MouseWheel += but_Click_remove_one;
                 flowLayoutPanel1.Controls.Add(productButton);
             }
 
@@ -403,11 +403,57 @@ namespace CoffeeControl
             
         }
 
+        public void delPositionToCheck(string positionName)
+        {
+            string summOfCheck = "\t\t\t\t\t\t\t" + "Итог:  " + sumPrice + "р.";
+
+            foreach (Product prod in Products)
+            {
+                if (positionsList.Items.Contains(summOfCheck))
+                {
+                    positionsList.Items.Remove(summOfCheck);
+                }
+
+                if (prod.name == positionName)
+                {
+                    string position = prod.name + "\t\t" + prod.posCount + " шт. \t\t" + prod.price * prod.posCount + " р.";
+                    if (positionsList.Items.Contains(position))
+                    {
+                        prod.posCount--;
+                        positionsList.Items.Remove(position);
+                    }
+                    sumPrice -= prod.price;
+                    position = prod.name + "\t\t" + prod.posCount + " шт. \t\t" + prod.price * prod.posCount + " р.";
+                    positionsList.Items.Add(position);
+
+
+
+                }
+
+                if (positionsList.Items.Contains(summOfCheck))
+                {
+                    positionsList.Items.Remove(summOfCheck);
+                }
+
+            }
+            summOfCheck = "\t\t\t\t\t\t\t" + "Итог:  " + sumPrice + "р.";
+            positionsList.Items.Add(summOfCheck);
+
+        }
+
         // событие по нажатию кнопки товара
         private void but_Click(object sender, EventArgs e)
         {
             string posName = ((Button)sender).Text;
             addPositionToCheck(posName);
+        }
+
+        
+
+        private void but_Click_remove_one(object sender, EventArgs e)
+        {
+            string posName = ((Button)sender).Text;
+            delPositionToCheck(posName);
         }
 
         private void button3_Click(object sender, EventArgs e)
