@@ -21,5 +21,7 @@ namespace CoffeeControl
         public double chokolate = 0;
         public double SyropCaramel1 = 0;
         public double SyropCocount1 = 0;
+
+        public int posCount = 1;
     }
 }

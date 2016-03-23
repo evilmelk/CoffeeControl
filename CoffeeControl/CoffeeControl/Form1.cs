@@ -369,7 +369,14 @@ namespace CoffeeControl
             {
                 if (prod.name == positionName)
                 {
-                    positionsList.Items.Add(positionName);
+                    string position = prod.name + "\t\t" + prod.posCount + " шт. \t\t" + prod.price * prod.posCount + " р.";
+                    if (positionsList.Items.Contains(position))
+                    {
+                        prod.posCount++;
+                        positionsList.Items.Remove(position);
+                    }
+                    position = prod.name + "\t\t" + prod.posCount + " шт. \t\t" + prod.price * prod.posCount + " р.";
+                    positionsList.Items.Add(position);                    
                 }
             }
         }
