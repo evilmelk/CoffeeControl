@@ -10,5 +10,6 @@ namespace CoffeeControl
     {
        // public string surname;
         public string name;
+        public int workerTime = 0;
     }
 }

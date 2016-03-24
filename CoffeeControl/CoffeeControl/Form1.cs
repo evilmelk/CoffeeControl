@@ -13,6 +13,7 @@ namespace CoffeeControl
     public partial class Form1 : Form
     {
         double sumPrice = 0;
+        int s = 0; int m = 0;
         List<Product> Products = new List<Product>();
         List<Material> Materials = new List<Material>();
         List<Shop> Shops = new List<Shop>();
@@ -326,9 +327,11 @@ namespace CoffeeControl
 
             Worker Ivanov = new Worker();
             Ivanov.name = "Иванов Василий";
+            Ivanov.workerTime = 0;
 
             Worker Koil = new Worker();
             Koil.name = "Койл Саша";
+            Koil.workerTime = 0;
 
 
             Workers.Add(Ivanov);
@@ -343,8 +346,7 @@ namespace CoffeeControl
                 productButton.Width = 96;
                 productButton.Height = 50;
                 productButton.BackColor = SystemColors.Menu;
-                productButton.Click += but_Click;
-               // productButton.DoubleClick += but_Click_remove_one;               
+                productButton.Click += but_Click;               
                 productButton.MouseWheel += but_Click_remove_one;
                 flowLayoutPanel1.Controls.Add(productButton);
             }
@@ -462,51 +464,70 @@ namespace CoffeeControl
             cup.Show(); //Выводим форму
         }
 
+
+
         private void label3_Click(object sender, EventArgs e)
         {
 
         }
-
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
-       
-
         private void ProductsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void label25_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+        private void button1_Click(object sender, EventArgs e) //старт
+        { 
+                    timer1.Start();
+                    s = 0; m = 0;
         }
 
-        private void button14_Click(object sender, EventArgs e)
+        private void button14_Click(object sender, EventArgs e) //Стоп
         {
-
+            timer1.Stop();
+            foreach (Worker work in Workers)
+            {
+                if (work.name == WorkerBox.SelectedItem)
+                {
+                    work.workerTime += m;
+                    textBox1.Text = "Общ. t= " + Convert.ToString( work.workerTime );
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+ private void timer1_Tick(object sender, EventArgs e)
+        {
+
+           textBox1.Text = Convert.ToString(m);
+            
+                    s++;
+                    if (s == 60)
+                    {
+                        m++;
+                        s = 0;
+                        
+                    }    
         }
 
 
