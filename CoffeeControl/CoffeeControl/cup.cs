@@ -14,7 +14,27 @@ namespace CoffeeControl
     {
         public cup()
         {
-            InitializeComponent();
+                     InitializeComponent();
+           
+            
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            //foreach (Material cups in Material.materials)
+            //{
+            //    if (cups.name == "Стакан 0.1Л")
+            //        cups.pieces += 1; 
+            //            //Convert.ToInt16( numericUpDown1.Value );
+
+            //}
+
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

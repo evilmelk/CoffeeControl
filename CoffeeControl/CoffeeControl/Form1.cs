@@ -15,7 +15,7 @@ namespace CoffeeControl
         double sumPrice = 0;
         int s = 0; int m = 0;
         List<Product> Products = new List<Product>();
-        List<Material> Materials = new List<Material>();
+      public  List<Material> Materials = new List<Material>();
         List<Shop> Shops = new List<Shop>();
         List<Worker> Workers = new List<Worker>();
 
@@ -519,10 +519,10 @@ namespace CoffeeControl
  private void timer1_Tick(object sender, EventArgs e)
         {
 
-           textBox1.Text = Convert.ToString(m);
+           textBox1.Text = "Тек. t= " + Convert.ToString(m);
             
                     s++;
-                    if (s == 60)
+                    if (s == 600)
                     {
                         m++;
                         s = 0;
