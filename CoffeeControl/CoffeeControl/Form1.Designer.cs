@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ShopsBox = new System.Windows.Forms.ComboBox();
             this.WorkerBox = new System.Windows.Forms.ComboBox();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
@@ -75,7 +74,7 @@
             // 
             this.WorkerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.WorkerBox.FormattingEnabled = true;
-            this.WorkerBox.Location = new System.Drawing.Point(12, 54);
+            this.WorkerBox.Location = new System.Drawing.Point(187, 15);
             this.WorkerBox.Name = "WorkerBox";
             this.WorkerBox.Size = new System.Drawing.Size(160, 26);
             this.WorkerBox.TabIndex = 1;
@@ -130,7 +129,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackColor = System.Drawing.Color.Tan;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.button32);
             this.panel1.Controls.Add(this.button11);
@@ -261,9 +260,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.Location = new System.Drawing.Point(100, 166);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(285, 18);
@@ -274,7 +272,6 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
             this.label2.Location = new System.Drawing.Point(816, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 24);
@@ -293,9 +290,8 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Turquoise;
+            this.label24.BackColor = System.Drawing.SystemColors.Control;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Image = ((System.Drawing.Image)(resources.GetObject("label24.Image")));
             this.label24.Location = new System.Drawing.Point(816, 391);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(121, 24);
@@ -304,6 +300,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.Color.Azure;
             this.textBox3.Location = new System.Drawing.Point(12, 480);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
@@ -313,10 +310,9 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Aquamarine;
+            this.label25.BackColor = System.Drawing.SystemColors.Control;
             this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label25.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Image = ((System.Drawing.Image)(resources.GetObject("label25.Image")));
             this.label25.Location = new System.Drawing.Point(29, 430);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(176, 22);
@@ -327,8 +323,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.flowLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("flowLayoutPanel1.BackgroundImage")));
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Tan;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(541, 54);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -350,6 +345,7 @@
             // 
             // positionsList
             // 
+            this.positionsList.BackColor = System.Drawing.Color.Azure;
             this.positionsList.FormattingEnabled = true;
             this.positionsList.Location = new System.Drawing.Point(541, 440);
             this.positionsList.Name = "positionsList";
@@ -364,8 +360,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1202, 577);
             this.Controls.Add(this.positionsList);
             this.Controls.Add(this.button14);
