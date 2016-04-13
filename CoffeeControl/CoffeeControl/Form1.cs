@@ -13,7 +13,7 @@ namespace CoffeeControl
     public partial class Form1 : Form
     {
         double sumPrice = 0;
-        int s = 0; int m = 0;
+        int s = 0; int m = 0; int sumTime = 0;
         List<Product> Products = new List<Product>();
       public  List<Material> Materials = new List<Material>();
         List<Shop> Shops = new List<Shop>();
@@ -504,10 +504,11 @@ namespace CoffeeControl
             {
                 if (work.name == WorkerBox.SelectedItem)
                 {
-                    work.workerTime += m;
-                    textBox1.Text = "Общ. t= " + Convert.ToString( work.workerTime );
+                    work.workerTime += m; sumTime = work.workerTime;
+                  //  textBox1.Text = "Общ. t= " + Convert.ToString( work.workerTime );
+
                 }
-            }
+            } 
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -519,13 +520,15 @@ namespace CoffeeControl
  private void timer1_Tick(object sender, EventArgs e)
         {
 
-           textBox1.Text = "Тек. t= " + Convert.ToString(m);
+            textBox1.Text = "Общ. t= " + sumTime;
+          // textBox1.Text = "Тек. t= " + Convert.ToString(m);
             
                     s++;
                     if (s == 600)
                     {
                         m++;
                         s = 0;
+                        sumTime ++;
                         
                     }    
         }
