@@ -6,13 +6,28 @@ using System.Threading.Tasks;
 
 namespace CoffeeControl
 {
-  public  class Material
+    public class Material
     {
         public string name;
-        public int pieces;        // сколько в наличии, для кофе например  pieces*unit
-        //public double unit;    //Единицы измерений - на них умножается количество в товаре
+        public enum Units {г, Кг, Л, мЛ, Шт, Упак}
+        public string type;
+        public string modifier;
+        public double pieces;      // сколько в наличии, для кофе например
         public string unitName; // название единиц измерения: г, шт и т.д.
 
-        public static IEnumerable<Material> materials { get; set; }
+        public Material(string name, double pieces, string unitName, string modifier = null, string type = null)
+        {
+            this.name = name;
+            this.pieces = pieces;
+            this.unitName = unitName;
+            
+            if (modifier != null)
+                this.name = this.name + " " + modifier;
+
+            if (type == null)
+                this.type = name;
+            else 
+                this.type = type;            
+        }         
     }
 }
