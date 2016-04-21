@@ -23,6 +23,23 @@ namespace CoffeeControl
 
         List<Worker> Workers = new List<Worker>();
 
+
+        public string GET_http(string url = "http://localhost/coffee-control.ru/materials.php"){
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            System.Net.WebRequest reqGET = System.Net.WebRequest.Create(url);
+            System.Net.WebResponse resp = reqGET.GetResponse();
+            System.IO.Stream stream = resp.GetResponseStream();
+            System.IO.StreamReader sr = new System.IO.StreamReader(stream);
+            string html = sr.ReadToEnd();
+            Console.WriteLine(html);
+            
+            textBox3.Text = html;
+         //   [{"materials_id":"1","name":"stacan 01","pieces":"2","unitName":null,"modifier":null}]
+           
+            return html;
+        }
+
+
         public Form1()
         {
 
@@ -417,6 +434,8 @@ namespace CoffeeControl
         private void dealButton_Click(object sender, EventArgs e)
         {
             dealWithIt();
+            GET_http();
+
         }
 
 
