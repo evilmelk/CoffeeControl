@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web.Script;
 
 namespace CoffeeControl
 {
@@ -100,28 +101,46 @@ namespace CoffeeControl
             Products.Add(SyropCocount);
 
 
-            Material Milk = new Material("Молоко", 20, Material.Units.Л.ToString());
-            Material Coffee = new Material("Кофе", 2, Material.Units.Кг.ToString());
-            Material Chocolate = new Material("Шоколад", 2, Material.Units.Кг.ToString());
+            Material Milk = new Material();
+            Milk = Milk.createMaterial("Молоко", 20, Material.Units.Л.ToString());
 
-            Material Cup01 = new Material("Стакан", 100, Material.Units.Шт.ToString(), "0.1", "Стаканы");// Material.Types.Стаканы.ToString());
-            Material Cup02 = new Material("Стакан", 100, Material.Units.Шт.ToString(), "0.2", "Стаканы");// Material.Types.Стаканы.ToString());
-            Material Cup03 = new Material("Стакан", 100, Material.Units.Шт.ToString(), "0.3", "Стаканы");// Material.Types.Стаканы.ToString());
-            Material Cup04 = new Material("Стакан", 100, Material.Units.Шт.ToString(), "0.4", "Стаканы");// Material.Types.Стаканы.ToString());
-            Material Cup05 = new Material("Стакан", 100, Material.Units.Шт.ToString(), "0.5", "Стаканы");// Material.Types.Стаканы.ToString());
+            Material Coffee = new Material();
+            Coffee = Coffee.createMaterial("Кофе", 2, Material.Units.Кг.ToString());
+            Material Chocolate = new Material();
+            Chocolate = Chocolate.createMaterial("Шоколад", 2, Material.Units.Кг.ToString());
 
-            Material Covers70 = new Material("Крышка", 100, Material.Units.Шт.ToString(), "70мм", "Крышки");// Material.Types.Крышки.ToString());
-            Material Covers80 = new Material("Крышка", 100, Material.Units.Шт.ToString(), "80мм", "Крышки");// Material.Types.Крышки.ToString());
-            Material Covers90 = new Material("Крышка", 100, Material.Units.Шт.ToString(), "90мм", "Крышки");// Material.Types.Крышки.ToString());
+            Material Cup01 = new Material();
+            Cup01 = Cup01.createMaterial("Стакан", 100, Material.Units.Шт.ToString(), "0.1", "Стаканы");// Material.Types.Стаканы.ToString());
+            Material Cup02 = new Material();
+            Cup02 = Cup02.createMaterial("Стакан", 100, Material.Units.Шт.ToString(), "0.2", "Стаканы");// Material.Types.Стаканы.ToString());
+            Material Cup03 = new Material();
+            Cup03 = Cup03.createMaterial("Стакан", 100, Material.Units.Шт.ToString(), "0.3", "Стаканы");// Material.Types.Стаканы.ToString());
+            Material Cup04 = new Material();
+            Cup04 = Cup04.createMaterial("Стакан", 100, Material.Units.Шт.ToString(), "0.4", "Стаканы");// Material.Types.Стаканы.ToString());
+            Material Cup05 = new Material();
+            Cup05 = Cup05.createMaterial("Стакан", 100, Material.Units.Шт.ToString(), "0.5", "Стаканы");// Material.Types.Стаканы.ToString());
 
-            Material Spoon = new Material("Ложки", 100, Material.Units.Шт.ToString());
-            Material Cream = new Material("Сливки", 20, Material.Units.Л.ToString());
+            Material Covers70 = new Material();
+            Covers70 = Covers70.createMaterial("Крышка", 100, Material.Units.Шт.ToString(), "70мм", "Крышки");// Material.Types.Крышки.ToString());
+            Material Covers80 = new Material();
+            Covers80 = Covers80.createMaterial("Крышка", 100, Material.Units.Шт.ToString(), "80мм", "Крышки");// Material.Types.Крышки.ToString());
+            Material Covers90 = new Material();
+            Covers90 = Covers90.createMaterial("Крышка", 100, Material.Units.Шт.ToString(), "90мм", "Крышки");// Material.Types.Крышки.ToString());
 
-            Material SyropCaramel1 = new Material("Сироп: карамель", 2, Material.Units.Л.ToString(), null, "Сиропы");// Material.Types.Сиропы.ToString());
-            Material SyropCocount1 = new Material("Сироп: кокос", 2, Material.Units.Л.ToString(), null, "Сиропы");// Material.Types.Сиропы.ToString());
+            Material Spoon = new Material();
+            Spoon = Spoon.createMaterial("Ложки", 100, Material.Units.Шт.ToString());
+            Material Cream = new Material();
+            Cream = Cream.createMaterial("Сливки", 20, Material.Units.Л.ToString());
 
-            Material Sugar = new Material("Сахар", 3, Material.Units.Кг.ToString());
-            Material Napkins = new Material("Салфетки", 3, Material.Units.Упак.ToString());
+            Material SyropCaramel1 = new Material();
+            SyropCaramel1 = SyropCaramel1.createMaterial("Сироп: карамель", 2, Material.Units.Л.ToString(), null, "Сиропы");// Material.Types.Сиропы.ToString());
+            Material SyropCocount1 = new Material();
+            SyropCocount1 = SyropCocount1.createMaterial("Сироп: кокос", 2, Material.Units.Л.ToString(), null, "Сиропы");// Material.Types.Сиропы.ToString());
+
+            Material Sugar = new Material();
+            Sugar = Sugar.createMaterial("Сахар", 3, Material.Units.Кг.ToString());
+            Material Napkins = new Material();
+            Napkins = Napkins.createMaterial("Салфетки", 3, Material.Units.Упак.ToString());
 
             Materials.Add(Coffee);
             Materials.Add(Chocolate);
@@ -417,6 +436,40 @@ namespace CoffeeControl
         private void dealButton_Click(object sender, EventArgs e)
         {
             dealWithIt();
+        }
+
+        public string GET_http(string url)
+        {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            System.Net.WebRequest reqGET = System.Net.WebRequest.Create(url);
+            System.Net.WebResponse resp = reqGET.GetResponse();
+            System.IO.Stream stream = resp.GetResponseStream();
+            System.IO.StreamReader sr = new System.IO.StreamReader(stream);
+            string json = sr.ReadToEnd();
+            return json;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string url = "http://localhost/coffeeControl/getMaterials.php";
+            string json = GET_http(url);
+            //sysMsgTextBox.Text = json;
+
+            List<Material> responseMaterialsList = new List<Material>();
+
+            responseMaterialsList = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<Material>>(json);
+
+            foreach (Material mat in Materials)
+            {
+                foreach (Material respMat in responseMaterialsList)
+                {
+                    if (respMat.name == mat.name)
+                        mat.pieces = respMat.pieces;
+                }
+            }
+            sysMsgTextBox.Text = "Синхронизировано с БД";
+            //responseMaterialsList = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<Material>>(json);
+
         }
 
 

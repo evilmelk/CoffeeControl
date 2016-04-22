@@ -13,24 +13,6 @@ namespace CoffeeControl
         public string portion; // порция или какой-то другой атрибут
         public List<Material> materialsForProduct;
 
-
-        // Перечисление количества единиц расходников Material
-
-
-        
-        //public int cups;
-        //public int covers;
-        //public double coffee;
-        //public double milk;
-        //public int sugar;
-        //public int cream;
-        //public int syrop;
-        //public double chokolate;
-        //public double syropCaramel;
-        //public double syropCocount1;
-
-        
-
         public int posCount = 1;
         public int amountPrice = 0;
 
@@ -44,36 +26,51 @@ namespace CoffeeControl
             this.price = price;
 
             this.materialsForProduct = new List<Material>();
-            Material Milk = new Material("Молоко", milk, Material.Units.Л.ToString());
-            Material Coffee = new Material("Кофе", coffee, Material.Units.Кг.ToString());
-            Material Chocolate = new Material("Шоколад", chokolate, Material.Units.Кг.ToString());
-            Material Cream = new Material("Сливки", cream, Material.Units.Л.ToString());
-            Material SyropCaramel1 = new Material("Сироп: карамель", syropCaramel1, Material.Units.Л.ToString(), null, "Сиропы");
-            Material SyropCocount1 = new Material("Сироп: кокос", syropCocount1, Material.Units.Л.ToString(), null, "Сиропы");
-            Material Sugar = new Material("Сахар", sugar, Material.Units.Кг.ToString());
+            Material Milk = new Material();
+            Milk = Milk.createMaterial("Молоко", milk, Material.Units.Л.ToString());
+            Material Coffee = new Material();
+            Coffee = Coffee.createMaterial("Кофе", coffee, Material.Units.Кг.ToString());
+            Material Chocolate = new Material();
+            Chocolate = Chocolate.createMaterial("Шоколад", chokolate, Material.Units.Кг.ToString());
+            Material Cream = new Material();
+            Cream = Cream.createMaterial("Сливки", cream, Material.Units.Л.ToString());
+            Material SyropCaramel1 = new Material();
+            SyropCaramel1 = SyropCaramel1.createMaterial("Сироп: карамель", syropCaramel1, Material.Units.Л.ToString(), null, "Сиропы");
+            Material SyropCocount1 = new Material();
+            SyropCocount1 = SyropCocount1.createMaterial("Сироп: кокос", syropCocount1, Material.Units.Л.ToString(), null, "Сиропы");
+            Material Sugar = new Material();
+            Sugar = Sugar.createMaterial("Сахар", sugar, Material.Units.Кг.ToString());
 
             if (portion != null)
             {
                 this.name = this.name + " " + portion;
                 this.portion = portion;
-                Material Cup = new Material("Стакан", 1, Material.Units.Шт.ToString(), portion, "Стаканы");
+                Material Cup = new Material();
+                Cup = Cup.createMaterial("Стакан", 1, Material.Units.Шт.ToString(), portion, "Стаканы");
                 Material Cover = null;
                 if (portion == "0.3")
                 {
-                    Cover = new Material("Крышка", 1, Material.Units.Шт.ToString(), "70мм", "Крышки");
+                    Cover = new Material();
+                    Cover = Cover.createMaterial("Крышка", 1, Material.Units.Шт.ToString(), "70мм", "Крышки");
                 }
                 else if (portion == "0.4")
                 {
-                    Cover = new Material("Крышка", 1, Material.Units.Шт.ToString(), "80мм", "Крышки");
+                    Cover = new Material();
+                    Cover = Cover.createMaterial("Крышка", 1, Material.Units.Шт.ToString(), "80мм", "Крышки");
                 }
                 else if (portion == "0.5")
                 {
-                    Cover = new Material("Крышка", 1, Material.Units.Шт.ToString(), "90мм", "Крышки");
-                }                    
+                    Cover = new Material();
+                    Cover = Cover.createMaterial("Крышка", 1, Material.Units.Шт.ToString(), "90мм", "Крышки");
+                }
                 else
-                    Cover = new Material("Крышка", 0, Material.Units.Шт.ToString(), "70мм", "Крышки");
+                {
+                    Cover = new Material();
+                    Cover = Cover.createMaterial("Крышка", 0, Material.Units.Шт.ToString(), "70мм", "Крышки");
+                }
 
-                Material Spoon = new Material("Ложки", spoon, Material.Units.Шт.ToString());
+                Material Spoon = new Material();
+                Spoon = Spoon.createMaterial("Ложки", spoon, Material.Units.Шт.ToString());
 
                 materialsForProduct.Add(Cup);
                 materialsForProduct.Add(Cover);
