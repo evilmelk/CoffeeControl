@@ -470,7 +470,8 @@ namespace CoffeeControl
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string url = "http://localhost/coffeeControl/getMaterials.php";
+            //string url = "http://localhost/coffeeControl/getMaterials.php";
+            string url = "http://coffee-control.ru/getMaterials.php";
             string json = GET_http(url);
             //sysMsgTextBox.Text = json;
 
