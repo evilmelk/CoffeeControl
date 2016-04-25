@@ -40,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dealButton = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.sysMsgTextBox = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.PanelProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.button14 = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PanelMaterials = new System.Windows.Forms.FlowLayoutPanel();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ShopsBox
@@ -158,14 +159,14 @@
             this.label24.TabIndex = 11;
             this.label24.Text = "Текущий чек";
             // 
-            // textBox3
+            // sysMsgTextBox
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Azure;
-            this.textBox3.Location = new System.Drawing.Point(12, 480);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(496, 71);
-            this.textBox3.TabIndex = 12;
+            this.sysMsgTextBox.BackColor = System.Drawing.Color.Azure;
+            this.sysMsgTextBox.Location = new System.Drawing.Point(12, 480);
+            this.sysMsgTextBox.Multiline = true;
+            this.sysMsgTextBox.Name = "sysMsgTextBox";
+            this.sysMsgTextBox.Size = new System.Drawing.Size(496, 71);
+            this.sysMsgTextBox.TabIndex = 12;
             // 
             // label25
             // 
@@ -233,19 +234,30 @@
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(353, 17);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(155, 23);
+            this.button3.TabIndex = 74;
+            this.button3.Text = "Синхронизировать";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1202, 577);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.PanelMaterials);
             this.Controls.Add(this.positionsList);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.PanelProducts);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.sysMsgTextBox);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.dealButton);
             this.Controls.Add(this.label2);
@@ -277,7 +289,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button dealButton;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox sysMsgTextBox;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.FlowLayoutPanel PanelProducts;
         private System.Windows.Forms.Button button14;
@@ -285,6 +297,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.FlowLayoutPanel PanelMaterials;
         private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button button3;
     }
 }
 
