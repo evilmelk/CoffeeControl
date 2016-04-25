@@ -179,7 +179,6 @@
             this.label25.Size = new System.Drawing.Size(176, 22);
             this.label25.TabIndex = 13;
             this.label25.Text = "Системные сообщения";
-            this.label25.Click += new System.EventHandler(this.label25_Click);
             // 
             // PanelProducts
             // 
@@ -190,7 +189,6 @@
             this.PanelProducts.Name = "PanelProducts";
             this.PanelProducts.Size = new System.Drawing.Size(638, 317);
             this.PanelProducts.TabIndex = 69;
-            this.PanelProducts.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // button14
             // 

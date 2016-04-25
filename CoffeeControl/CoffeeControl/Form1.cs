@@ -24,23 +24,6 @@ namespace CoffeeControl
 
         List<Worker> Workers = new List<Worker>();
 
-
-        public string GET_http(string url = "http://localhost/coffee-control.ru/materials.php"){
-            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            System.Net.WebRequest reqGET = System.Net.WebRequest.Create(url);
-            System.Net.WebResponse resp = reqGET.GetResponse();
-            System.IO.Stream stream = resp.GetResponseStream();
-            System.IO.StreamReader sr = new System.IO.StreamReader(stream);
-            string html = sr.ReadToEnd();
-            Console.WriteLine(html);
-            
-            textBox3.Text = html;
-         //   [{"materials_id":"1","name":"stacan 01","pieces":"2","unitName":null,"modifier":null}]
-           
-            return html;
-        }
-
-
         public Form1()
         {
 
@@ -322,6 +305,7 @@ namespace CoffeeControl
                 }
             }
             currentChecks.Add(check);
+            sysMsgTextBox.Text += printSysMsg("Продажа: " + check.price.ToString() + " р.");
             currentPositions = new List<Product>();
             positionsList.Items.Clear();
         }
@@ -380,34 +364,6 @@ namespace CoffeeControl
             openMaterialForm(materName);
         }
 
-
-
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void ProductsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e) //старт
         {
             timer1.Start();
@@ -453,11 +409,10 @@ namespace CoffeeControl
         private void dealButton_Click(object sender, EventArgs e)
         {
             dealWithIt();
-            GET_http();
-
+            //GET_http();
         }
 
-        public string GET_http(string url)
+        public string GET_http (string url)
         {
             System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             System.Net.WebRequest reqGET = System.Net.WebRequest.Create(url);
@@ -487,9 +442,14 @@ namespace CoffeeControl
                         mat.pieces = respMat.pieces;
                 }
             }
-            sysMsgTextBox.Text = "Синхронизировано с БД";
-            //responseMaterialsList = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<Material>>(json);
+            sysMsgTextBox.Text = printSysMsg("Синхронизировано с БД");
+        }
 
+        private string printSysMsg (string msg)
+        {
+            var time = System.DateTime.Now;
+            string message = time.ToShortTimeString() + ": " + msg + Environment.NewLine;
+            return message;
         }
 
 
