@@ -11,6 +11,8 @@ namespace CoffeeControl
         public DateTime date;
         public List<Product> positions;
         public double price;
+        public int workerID;
+        public int CheckID;
 
         public Check(List<Product> positions)
         {
