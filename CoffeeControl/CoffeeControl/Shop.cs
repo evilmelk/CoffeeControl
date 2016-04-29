@@ -8,6 +8,7 @@ namespace CoffeeControl
 {
     class Shop
     {
+        public int shopID;
         public string title;
     }
 }

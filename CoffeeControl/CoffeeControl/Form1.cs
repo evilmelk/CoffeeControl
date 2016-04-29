@@ -423,12 +423,24 @@ namespace CoffeeControl
             return json;
         }
 
+        private void loadMaterialsToServer()
+        {
+            foreach (Material mat in Materials)
+            {
+            //Material mat = Materials[5];
+                string query = "http://coffee-control.ru/new.php?name=" + mat.name + "&pieces=" + mat.pieces + "&unitName=" + mat.unitName + "&modifier"+mat.modifier+"&type="+mat.type;
+                string jsonResult = GET_http(query);
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
+            //loadMaterialsToServer();
+            
             //string url = "http://localhost/coffeeControl/getMaterials.php";
             string url = "http://coffee-control.ru/getMaterials.php";
             string json = GET_http(url);
-            //sysMsgTextBox.Text = json;
+            //sysMsgTextBox.Text = json;            
 
             List<Material> responseMaterialsList = new List<Material>();
 
@@ -439,9 +451,17 @@ namespace CoffeeControl
                 foreach (Material respMat in responseMaterialsList)
                 {
                     if (respMat.name == mat.name)
+                    {
+                        mat.materials_id = respMat.materials_id;
+                        mat.name = respMat.name;
                         mat.pieces = respMat.pieces;
+                        //mat.type = respMat.type;
+                        //mat.modifier = respMat.modifier;
+                    }
+
                 }
             }
+
             sysMsgTextBox.Text = printSysMsg("Синхронизировано с БД");
         }
 

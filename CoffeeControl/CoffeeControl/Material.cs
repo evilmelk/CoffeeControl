@@ -8,6 +8,7 @@ namespace CoffeeControl
 {
     public class Material
     {
+        public int materials_id;
         public string name { get; set; }
         public enum Units {г, Кг, Л, мЛ, Шт, Упак}
         public string type { get; set; }
@@ -20,9 +21,13 @@ namespace CoffeeControl
             this.name = name;
             this.pieces = pieces;
             this.unitName = unitName;
-            
+
+
             if (modifier != null)
+            {
                 this.name = this.name + " " + modifier;
+                this.modifier = modifier;
+            }
 
             if (type == null)
                 this.type = name;

@@ -12,7 +12,7 @@ namespace CoffeeControl
         public List<Product> positions;
         public double price;
         public int workerID;
-        public int CheckID;
+        public int checkID;        
 
         public Check(List<Product> positions)
         {
