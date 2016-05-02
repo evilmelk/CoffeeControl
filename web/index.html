@@ -1,0 +1,30 @@
+<?php
+$db_conn = new mysqli("coffee-control.ru", "u0187820_default", "280595", "u0187820_default");
+if (mysqli_connect_errno())
+  {
+  echo 'Connection to database failed:'.mysqli_connect_error();
+  exit();
+  }
+else
+  {
+  echo 'Ok';
+  }
+?>
+
+<html>
+    <head>
+        <title>װנוילû ג html</title>
+    </head>
+    <frameset rows="15%, 85%">
+
+        	<frame src="top.html" marginwidth="50"
+                   marginheight="20" noresize>
+			<frameset cols="15%, 85%">
+        		<frame src="menu.html" marginwidth="50"
+                                scrolling="no">
+        		<frame src="content.html" name="content"
+             	marginwidth="50" marginheight="20">
+</frameset>
+
+    </frameset>
+</html>

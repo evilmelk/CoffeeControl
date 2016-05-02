@@ -1,0 +1,9 @@
+https://server141.hosting.reg.ru/manager/ispmgr
+
+user: u0187820
+passwd: HI7f_ib0
+
+ад:
+
+user: u0187820_default
+passwd: 280595
