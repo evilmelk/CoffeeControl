@@ -14,9 +14,8 @@ $result_select_worker = mysql_query($sql_worker);
 $sql_shop = "SELECT title FROM shops"; 
 $result_select_shop = mysql_query($sql_shop);
 //ввод даты
-$dateUP = isset($_POST['dateUP']) ? $_POST['dateUP'] : 'Unknown';
-$dateEND = isset($_POST['dateEND']) ? $_POST['dateEND'] : 'Unknown';
-
+$date = isset($_POST['date']) ? $_POST['date'] : 'Unknown';
+//$age = isset($_POST['age']) and $_POST['age'] > 0 ? (int) $_POST['age'] : 'Unknown';
 
 
 
@@ -48,8 +47,7 @@ $dateEND = isset($_POST['dateEND']) ? $_POST['dateEND'] : 'Unknown';
 
 
 <form action="lost.php" method="post" accept-charset="utf8">
-DateUP ( year-month-day: 2016-05-04): <input type=text name="dateUP"><br>
-DateEND ( year-month-day: 2016-05-04): <input type=text name="dateEnd"><br>
+Date ( year-month-day: 2016-05-04): <input type=text name="name"><br>
 <input type=submit value="GO!">
 </form>
 
