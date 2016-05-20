@@ -13,8 +13,12 @@ namespace CoffeeControl
 {
     public partial class Form1 : Form
     {
+        string hostURL = "http://coffee-control.ru/"; // (http://localhost/coffeeControl/)
+        
         double sumPrice = 0;
-        int s = 0; int m = 0; int sumTime = 0;
+        int s = 0; int m = 0; int sumTime = 0; 
+        int selectedShopID;
+        int selectedWorkerID;
         public List<Product> Products = new List<Product>();
         public List<Material> Materials = new List<Material>();
         public List<Product> currentPositions = new List<Product>();
@@ -29,12 +33,15 @@ namespace CoffeeControl
 
             InitializeComponent();
             loadAllData();
+            loadMaterialsFromServer();
         }
 
         public void updateMaterials()
         {
             Materials = Data.Materials;
         }
+
+        
 
 
         //Загрузить все данные программы
@@ -59,15 +66,15 @@ namespace CoffeeControl
             Product Capuchino05 = new Product("Капучино", "0.5", 190, 0.028, 160);
 
             
-            Product Latte02 = new Product("Латте","0.2", 85, 0.007, 100);
-            Product Latte03 = new Product("Латте", "0.3", 120, 0.007, 150);
-            Product Latte04 = new Product("Латте", "0.4", 155, 0.007, 200);
-            Product Latte05 = new Product("Латте", "0.5", 190, 0.007, 250);
+            Product Latte02 = new Product("Латте","0.2", 85, 0.007, 0.100);
+            Product Latte03 = new Product("Латте", "0.3", 120, 0.007, 0.150);
+            Product Latte04 = new Product("Латте", "0.4", 155, 0.007, 0.200);
+            Product Latte05 = new Product("Латте", "0.5", 190, 0.007, 0.250);
 
-            Product HotChocolate02 = new Product ("Гор. шок.", "0.2", 110, 0, 120, 0, 0,0.035);
-            Product HotChocolate03 = new Product ("Гор. шок.", "0.3", 145, 0, 180, 0, 0, 0.070);
-            Product HotChocolate04 = new Product ("Гор. шок.", "0.4", 180, 0, 240, 0, 0, 0.135);
-            Product HotChocolate05 = new Product("Гор. шок.", "0.5", 215, 0, 300, 0, 0, 0.170);
+            Product HotChocolate02 = new Product("Гор. шок.", "0.2", 110, 0, 0.120, 0, 0, 0.035);
+            Product HotChocolate03 = new Product("Гор. шок.", "0.3", 145, 0, 0.180, 0, 0, 0.070);
+            Product HotChocolate04 = new Product("Гор. шок.", "0.4", 180, 0, 0.240, 0, 0, 0.135);
+            Product HotChocolate05 = new Product("Гор. шок.", "0.5", 215, 0, 0.300, 0, 0, 0.170);
 
             Product SyropCaramel = new Product("Карамел. Сир.", "0.01", 10, 0, 0, 0, 0, 0, 0.01);   
             Product SyropCocount = new Product("Кокос. Сир.", "0.01", 10, 0, 0, 0, 0, 0, 0, 0.01);
@@ -162,9 +169,12 @@ namespace CoffeeControl
 
             Shop Barviha = new Shop();
             Barviha.title = "Барвиха";
+            Barviha.shopID = 1;
+
 
             Shop Kreml = new Shop();
             Kreml.title = "Кремль";
+            Kreml.shopID = 2;
 
             Shops.Add(Barviha);
             Shops.Add(Kreml);
@@ -172,10 +182,12 @@ namespace CoffeeControl
             Worker Ivanov = new Worker();
             Ivanov.name = "Иванов Василий";
             Ivanov.workerTime = 0;
+            Ivanov.workerID = 1;
 
             Worker Koil = new Worker();
             Koil.name = "Койл Саша";
             Koil.workerTime = 0;
+            Koil.workerID = 2;
 
 
             Workers.Add(Ivanov);
@@ -216,6 +228,8 @@ namespace CoffeeControl
             {
                 WorkerBox.Items.Add(work.name);
             }
+            selectedWorkerID = Workers[0].workerID;
+            selectedShopID = Shops[0].shopID;
 
         }
 
@@ -254,6 +268,56 @@ namespace CoffeeControl
         /// Функция добавляет название позиции в чек
         /// </summary>
         /// <param name="positionName">Название позиции</param>
+        
+
+        public void dealWithIt()
+        {
+            string query = "";
+            Check check = new Check(currentPositions);
+            foreach (Product position in currentPositions)
+            {
+                foreach (Material mat in Materials)
+                {
+                    foreach (Material posMat in position.materialsForProduct)
+                    {
+                        if (posMat.name == mat.name)
+                        {
+                            mat.pieces = mat.pieces - position.posCount * posMat.pieces;
+                            int matId = mat.materials_id;
+                            double matQnty = Math.Round(mat.pieces, 3);
+                            //printSysMsg("mat.materials_id  " + matId + "mat.name " + mat.name + " mat.pieces " + mat.pieces);
+                            
+                            query = hostURL+"updateMaterialQuantity.php?materials_id=" + mat.materials_id + "&materialQuantity=" + matQnty;
+                            //string response = GET_http(query);
+                            //printSysMsg(response);
+                            //sysMsgTextBox.Text += Environment.NewLine;
+                        }
+                    }
+                }
+            }
+            currentChecks.Add(check);
+            //printSysMsg("price" + check.price + "&workerID=" + selectedWorkerID + "&shopID=" + selectedShopID);
+
+            query = hostURL+"putNewCheckAndGetCheckID.php?price" + check.price + "&workerID=" + selectedWorkerID + "&shopID=" + selectedShopID + "&date=" + check.date;
+            int lastCheckId = Convert.ToInt16(GET_http(query));
+
+            foreach (Product position in check.positions)
+            {
+                query = hostURL + "putPositionWithCheckID.php?checkID=" + lastCheckId + "&position=" + position.name + "&price=" + position.price + "&quantity=" + position.posCount;
+                string response = GET_http(query);
+                //printSysMsg(response);
+            }
+
+            
+            
+            printSysMsg("Продажа: " + check.price.ToString() + " р." + "ИД чека: " + lastCheckId);
+
+
+            currentPositions = new List<Product>();
+            positionsList.Items.Clear();
+            sumPrice = 0;
+        }
+
         public void addPositionToCheck(string positionName)
         {
             string summOfCheck = "\t\t\t\t\t\t\t" + "Итог:  " + sumPrice + "р.";
@@ -290,25 +354,6 @@ namespace CoffeeControl
             positionsList.Items.Add(summOfCheck);
         }
 
-        public void dealWithIt()
-        {
-            Check check = new Check(currentPositions);
-            foreach (Product position in currentPositions)
-            {
-                foreach (Material mat in Materials)
-                {
-                    foreach (Material posMat in position.materialsForProduct)
-                    {
-                        if (posMat.name == mat.name)
-                            mat.pieces = mat.pieces - position.posCount * posMat.pieces;
-                    }
-                }
-            }
-            currentChecks.Add(check);
-            sysMsgTextBox.Text += printSysMsg("Продажа: " + check.price.ToString() + " р.");
-            currentPositions = new List<Product>();
-            positionsList.Items.Clear();
-        }
 
         public void delPositionToCheck(string positionName)
         {
@@ -404,6 +449,7 @@ namespace CoffeeControl
         {
             currentPositions = new List<Product>();
             positionsList.Items.Clear();
+            sumPrice = 0;
         }
 
         private void dealButton_Click(object sender, EventArgs e)
@@ -428,17 +474,15 @@ namespace CoffeeControl
             foreach (Material mat in Materials)
             {
             //Material mat = Materials[5];
-                string query = "http://coffee-control.ru/new.php?name=" + mat.name + "&pieces=" + mat.pieces + "&unitName=" + mat.unitName + "&modifier"+mat.modifier+"&type="+mat.type;
+                string query = "http://coffee-control.ru/new.php?name=" + mat.name + "&pieces=" + mat.pieces + "&unitName=" + mat.unitName + "&modifier=" + mat.modifier + "&type=" + mat.type + "&shopID=" + selectedShopID;
                 string jsonResult = GET_http(query);
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public void loadMaterialsFromServer()
         {
-            //loadMaterialsToServer();
-            
             //string url = "http://localhost/coffeeControl/getMaterials.php";
-            string url = "http://coffee-control.ru/getMaterials.php";
+            string url = hostURL+"getMaterials.php";
             string json = GET_http(url);
             //sysMsgTextBox.Text = json;            
 
@@ -462,14 +506,41 @@ namespace CoffeeControl
                 }
             }
 
-            sysMsgTextBox.Text = printSysMsg("Синхронизировано с БД");
+            printSysMsg("Синхронизировано с БД");
+        }
+        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            loadMaterialsFromServer();
+            
+            
         }
 
         private string printSysMsg (string msg)
         {
             var time = System.DateTime.Now;
             string message = time.ToShortTimeString() + ": " + msg + Environment.NewLine;
+            sysMsgTextBox.Text += message;
             return message;
+        }
+
+        private void ShopsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedShopID = Shops.ElementAt(ShopsBox.SelectedIndex).shopID;
+            printSysMsg("Смена торговой точки на " + selectedShopID);
+        }
+
+        private void WorkerBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            selectedWorkerID =  Workers.ElementAt(WorkerBox.SelectedIndex).workerID;
+            printSysMsg("Смена текущего продавца на точке: " + selectedWorkerID);
+        }
+
+        private void sysMsgTextBox_TextChanged(object sender, EventArgs e)
+        {
+            sysMsgTextBox.SelectionStart = sysMsgTextBox.Text.Length;
+            sysMsgTextBox.ScrollToCaret();
         }
 
 

@@ -60,6 +60,7 @@
             this.ShopsBox.Size = new System.Drawing.Size(160, 26);
             this.ShopsBox.TabIndex = 0;
             this.ShopsBox.Text = "Кофейня";
+            this.ShopsBox.SelectedIndexChanged += new System.EventHandler(this.ShopsBox_SelectedIndexChanged);
             // 
             // WorkerBox
             // 
@@ -70,6 +71,7 @@
             this.WorkerBox.Size = new System.Drawing.Size(160, 26);
             this.WorkerBox.TabIndex = 1;
             this.WorkerBox.Text = "Работник";
+            this.WorkerBox.SelectedIndexChanged += new System.EventHandler(this.WorkerBox_SelectedIndexChanged);
             // 
             // shapeContainer1
             // 
@@ -144,7 +146,7 @@
             this.dealButton.Name = "dealButton";
             this.dealButton.Size = new System.Drawing.Size(135, 23);
             this.dealButton.TabIndex = 10;
-            this.dealButton.Text = "Сформировать чек";
+            this.dealButton.Text = "Продать";
             this.dealButton.UseVisualStyleBackColor = true;
             this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
@@ -165,8 +167,10 @@
             this.sysMsgTextBox.Location = new System.Drawing.Point(12, 480);
             this.sysMsgTextBox.Multiline = true;
             this.sysMsgTextBox.Name = "sysMsgTextBox";
+            this.sysMsgTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sysMsgTextBox.Size = new System.Drawing.Size(496, 71);
             this.sysMsgTextBox.TabIndex = 12;
+            this.sysMsgTextBox.TextChanged += new System.EventHandler(this.sysMsgTextBox_TextChanged);
             // 
             // label25
             // 

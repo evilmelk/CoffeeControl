@@ -9,6 +9,7 @@ namespace CoffeeControl
     class Worker
     {
        // public string surname;
+        public int workerID;
         public string name;
         public int workerTime = 0;
     }

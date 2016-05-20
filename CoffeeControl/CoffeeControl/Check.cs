@@ -8,7 +8,7 @@ namespace CoffeeControl
 {
     public class Check
     {
-        public DateTime date;
+        public string date;
         public List<Product> positions;
         public double price;
         public int workerID;
@@ -17,7 +17,9 @@ namespace CoffeeControl
         public Check(List<Product> positions)
         {
             this.positions = positions;
-            this.date = System.DateTime.Now;
+            var dateValue = System.DateTime.Now;
+            this.date = dateValue.ToString("yyyy-MM-dd HH:mm:ss");
+            
 
             foreach (Product pos in this.positions)
             {
