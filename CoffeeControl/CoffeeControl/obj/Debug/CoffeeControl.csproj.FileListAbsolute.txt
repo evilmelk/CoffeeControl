@@ -18,3 +18,5 @@ C:\Users\Илья\Documents\GitHub\CoffeeControl\CoffeeControl\CoffeeControl\obj
 C:\Users\Илья\Documents\GitHub\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.csproj.GenerateResource.Cache
 C:\Users\Илья\Documents\GitHub\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.MaterialsForm.resources
 D:\Google disk B.O\github\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.MaterialsForm.resources
+C:\Users\Андрей\Documents\Visual Studio 2012\Projects\CoffeeControl\CoffeeControl\CoffeeControl\bin\Debug\CoffeeControl.exe.config
+C:\Users\Андрей\Documents\Visual Studio 2012\Projects\CoffeeControl\CoffeeControl\CoffeeControl\obj\Debug\CoffeeControl.exe
